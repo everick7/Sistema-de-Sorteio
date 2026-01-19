@@ -17,7 +17,12 @@ body {
   box-sizing: border-box;
 }
 
-/* EFEITO DE VIDRO ÚNICO E OTIMIZADO */
+h1, h2 {
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+/* BOX DE VIDRO REFORÇADA COM PROFUNDIDADE */
 .glass-box {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(15px);
@@ -61,7 +66,7 @@ input {
   color: #333;
 }
 
-/* GRID E TABELAS */
+/* LAYOUT GRID E TABELAS */
 .grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
@@ -74,7 +79,7 @@ input {
 table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed; /* Mantém colunas alinhadas */
+  table-layout: fixed; 
 }
 
 th, td {
@@ -83,17 +88,17 @@ th, td {
   word-wrap: break-word;
 }
 
-.col-cod { width: 65px; } /* Tamanho fixo para o código */
+/* LARGURAS FIXAS PARA CENTRALIZAÇÃO NO MOBILE */
+.col-cod { width: 65px; } 
 .col-nome { width: auto; }
 
-/* ESTILO DO "SORTEADO" NA TABELA */
 .sorteado-label {
   color: #00b4d8;
-  font-size: 0.8rem;
-  margin-left: 5px;
+  font-size: 0.85rem;
+  font-weight: bold;
 }
 
-/* BOTÕES E @ */
+/* BOTÕES - ANIMAÇÃO E ESTILO */
 button { 
   cursor: pointer; 
   border-radius: 8px; 
@@ -102,54 +107,16 @@ button {
   color: white; 
   font-weight: 600; 
   padding: 10px 18px; 
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 button:hover { 
-  transform: translateY(-2px); 
-  filter: brightness(1.2); 
-  box-shadow: 0 5px 15px rgba(0, 180, 216, 0.4); 
+  transform: translateY(-3px); 
+  filter: brightness(1.2);
+  box-shadow: 0 5px 15px rgba(0, 180, 216, 0.4);
 }
 
-.btn-reset { width: 100%; margin-top: 10px; background: #555; color: #fff; }
+button.danger { background: #e63946; }
 
-.contato a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #fff;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 8px;
-  background: rgba(255,255,255,0.08);
-  transition: 0.3s;
-}
-
-.contato a:hover { 
-  background: rgba(255,255,255,0.2); 
-  transform: translateX(5px); /* Animação suave no @ */
-}
-
-/* RESPONSIVIDADE FINAL */
-@media (max-width: 800px) {
-  .grid {
-    grid-template-columns: 1fr;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .controls {
-    flex-direction: row; 
-    flex-wrap: wrap;
-  }
-
-  .input-group {
-    flex: 1 1 100%;
-  }
-
-  input { max-width: 65%; }
-
-  .main-table { height: 350px; }
-  
-  .table-wrapper { width: 100%; margin: 0; }
-}
+.btn-reset { 
+  width: 100
