@@ -10,6 +10,7 @@ function adicionarNome() {
         return;
     }
 
+    // Separa por vírgula, ponto ou quebra de linha
     const nomesParaAdicionar = textoEntrada.split(/[,.\n]/);
 
     nomesParaAdicionar.forEach(item => {
@@ -67,7 +68,7 @@ function atualizarTabela() {
         if (jaSorteado) row.style.opacity = "0.5";
 
         row.innerHTML = `
-            <td>${cod}</td>
+            <td class="col-cod">${cod}</td>
             <td>${nome} ${jaSorteado ? "<strong>(Sorteado)</strong>" : ""}</td>
         `;
         tabela.appendChild(row);
@@ -113,7 +114,7 @@ function mostrarVencedores(lista) {
     lista.forEach(p => {
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td>${p.cod}</td>
+            <td class="col-cod">${p.cod}</td>
             <td>${p.nome}</td>
         `;
         tabela.appendChild(row);
