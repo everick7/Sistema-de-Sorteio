@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Sistema de sorteio prototipo</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <div class="container">
+  <h1>Sistema de Sorteio</h1>
+
+  <div class="controls glass-box">
+    <div class="input-group">
+      <input type="text" id="nomeInput" placeholder="Nome do participante" aria-label="Nome">
+      <button onclick="adicionarNome()">Adicionar</button>
+    </div>
+    <div class="input-group">
+      <input type="number" id="deleteIndex" placeholder="Cod. p/ deletar" aria-label="Deletar">
+      <button onclick="deletarNome()">Deletar</button>
+      <button class="danger" onclick="deletarTodos()">Limpar</button>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="glass-box column-main">
+      <h2>Participantes</h2>
+      <div class="table-wrapper main-table"> <table>
+          <thead>
+            <tr>
+              <th>Cod.</th>
+              <th>Nome</th>
+            </tr>
+          </thead>
+          <tbody id="tabelaNomes"></tbody>
+        </table>
+      </div>
+
+      <div class="sortear-area">
+        <input type="number" id="qtdVencedores" placeholder="Qtd. vencedores">
+        <button onclick="sortear()">Sortear</button>
+      </div>
+    </div>
+
+    <div class="column-side">
+      
+      <div class="glass-box contato">
+        <h2>Contato</h2>
+        <a href="https://www.instagram.com/ck.chakals/" target="_blank"><i class="fab fa-instagram"></i> ck.chakals</a>
+        <a href="https://www.tiktok.com/@chakalscodm?lang=pt-BR" target="_blank"><i class="fab fa-tiktok"></i> chakalscodm</a>
+        <a href="https://github.com/everick7" target="_blank"><i class="fab fa-github"></i> everick7</a>
+      </div>
+
+      <div class="glass-box winners">
+        <h2>Vencedores</h2>
+        <div class="table-wrapper winners-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Cod.</th>
+                <th>Nome</th>
+              </tr>
+            </thead>
+            <tbody id="tabelaVencedores"></tbody>
+          </table>
+        </div>
+        <button class="btn-reset" onclick="resetarBloqueios()">Liberar Sorteados</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
