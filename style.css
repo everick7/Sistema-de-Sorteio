@@ -7,6 +7,7 @@ body {
   background: #1a1a2e url("https://i.pinimg.com/736x/59/8d/ea/598dea1449bcb0c207f19590236e983c.jpg") no-repeat center center fixed;
   background-size: cover;
   color: #fff;
+  /* Evita rolagem horizontal indesejada no celular */
   overflow-x: hidden; 
 }
 
@@ -14,7 +15,7 @@ body {
   max-width: 1100px;
   margin: auto;
   padding: 20px;
-  box-sizing: border-box;
+  box-sizing: border-box; /* Garante que o padding não aumente a largura total */
 }
 
 /* BOX DE VIDRO */
@@ -39,7 +40,7 @@ body {
 .input-group {
   display: flex;
   gap: 5px;
-  flex: 1 1 300px; 
+  flex: 1 1 300px; /* Permite que o grupo quebre linha se não houver espaço */
   max-width: 100%;
 }
 
@@ -47,4 +48,107 @@ input {
   flex: 1;
   min-width: 0;
   padding: 10px;
-  border
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  font-family: inherit;
+}
+
+/* LAYOUT EM GRID (Horizontal) */
+.grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr; /* 1.5 partes para esquerda, 1 parte para direita */
+  gap: 20px;
+}
+
+.column-side {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ALTURA DAS TABELAS */
+.main-table {
+  height: 450px;
+  overflow-y: auto;
+}
+
+.winners-table {
+  height: 180px;
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th { background: rgba(0,0,0,0.3); padding: 10px; position: sticky; top: 0; z-index: 1; }
+td { padding: 8px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+/* BOTÕES E CONTATOS */
+button { cursor: pointer; border-radius: 8px; border: none; background: #00b4d8; color: white; font-weight: 600; padding: 10px; transition: 0.3s; }
+button:hover { transform: scale(1.02); filter: brightness(1.2); }
+button.danger { background: #e63946; }
+.btn-reset { width: 100%; margin-top: 10px; background: #ffb703; color: #000; }
+
+.contato a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  background: rgba(255,255,255,0.05);
+  transition: 0.3s;
+}
+.contato a:hover { background: rgba(255,255,255,0.15); }
+.contato i { margin-right: 10px; font-size: 20px; width: 25px; text-align: center; color: #00b4d8; }
+
+/* ======================================================
+   RESPONSIVIDADE (Ajustes Mantendo o Estilo CodePen)
+   ====================================================== */
+@media (max-width: 800px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .grid {
+    grid-template-columns: 1fr; /* Tabelas empilham verticalmente */
+  }
+  
+  /* Ajuste para botões voltarem ao tamanho normal do CodePen */
+  .controls {
+    flex-direction: row; /* Mantém lado a lado */
+    flex-wrap: wrap; 
+  }
+
+  .input-group {
+    flex: 1 1 100%; /* Cada conjunto de input+botão ganha sua linha */
+    width: 100%;
+  }
+
+  input {
+    width: auto; /* Para de esticar sozinho */
+  }
+
+  button {
+    width: auto; /* O botão volta a ter o tamanho do texto dele! */
+    padding: 10px 15px;
+  }
+
+  .main-table {
+    height: 350px;
+  }
+
+  /* Mantém o input de quantidade e botão de sortear lado a lado também */
+  .sortear-area {
+    display: flex;
+    gap: 10px;
+  }
+}
