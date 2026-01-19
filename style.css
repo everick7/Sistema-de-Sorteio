@@ -17,22 +17,24 @@ body {
   box-sizing: border-box;
 }
 
-h1, h2 {
-  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
-}
-
-/* BOX DE VIDRO REFORÇADA */
+/* EFEITO DE VIDRO ÚNICO E OTIMIZADO */
 .glass-box {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
+h1, h2, th, td, button {
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.5px;
+}
+
+/* CONTROLES */
 .controls {
   display: flex;
   flex-wrap: wrap;
@@ -56,126 +58,98 @@ input {
   background: rgba(255, 255, 255, 0.95);
   font-family: inherit;
   outline: none;
+  color: #333;
 }
 
-/* LAYOUT EM GRID */
+/* GRID E TABELAS */
 .grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   gap: 20px;
 }
 
-.column-side {
-  display: flex;
-  flex-direction: column;
-}
-
 .main-table { height: 450px; overflow-y: auto; }
 .winners-table { height: 180px; overflow-y: auto; }
 
-/* --- AJUSTE GLOBAL DE TABELAS --- */
 table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed; /* Força as colunas a respeitarem a largura */
+  table-layout: fixed; /* Mantém colunas alinhadas */
 }
 
 th, td {
   padding: 12px 5px;
   text-align: center;
   word-wrap: break-word;
-  overflow-wrap: break-word;
 }
 
-/* Define larguras fixas para não desregular */
-.col-cod { width: 60px; }
+.col-cod { width: 65px; } /* Tamanho fixo para o código */
 .col-nome { width: auto; }
 
-/* REFORÇO DO EFEITO DE VIDRO (Mais claro para dar vida) */
-/* BOX DE VIDRO REFORÇADA */
-.glass-box {
-  background: rgba(255, 255, 255, 0.08); /* Um pouco mais transparente para o fundo aparecer melhor */
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px); /* Essencial para Safari/iPhone */
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 15px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Sombra para dar profundidade */
+/* ESTILO DO "SORTEADO" NA TABELA */
+.sorteado-label {
+  color: #00b4d8;
+  font-size: 0.8rem;
+  margin-left: 5px;
 }
 
-/* CORREÇÃO DO EFEITO "SEM VIDA" NAS LETRAS */
-h1, h2, th, td, button {
-  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); /* Dá destaque ao texto sobre o fundo escuro */
-  letter-spacing: 0.5px;
+/* BOTÕES E @ */
+button { 
+  cursor: pointer; 
+  border-radius: 8px; 
+  border: none; 
+  background: #00b4d8; 
+  color: white; 
+  font-weight: 600; 
+  padding: 10px 18px; 
+  transition: 0.3s;
 }
 
-/* RESPONSIVIDADE AJUSTADA */
+button:hover { 
+  transform: translateY(-2px); 
+  filter: brightness(1.2); 
+  box-shadow: 0 5px 15px rgba(0, 180, 216, 0.4); 
+}
+
+.btn-reset { width: 100%; margin-top: 10px; background: #555; color: #fff; }
+
+.contato a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background: rgba(255,255,255,0.08);
+  transition: 0.3s;
+}
+
+.contato a:hover { 
+  background: rgba(255,255,255,0.2); 
+  transform: translateX(5px); /* Animação suave no @ */
+}
+
+/* RESPONSIVIDADE FINAL */
 @media (max-width: 800px) {
-  /* Impede que o fundo "vaze" ou crie bordas brancas estranhas */
-  body {
-    background-attachment: scroll; /* Melhora a performance e bug de fundo no mobile */
-  }
-
   .grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
     display: flex;
     flex-direction: column;
   }
 
-  /* Mantém os botões pequenos mas centralizados */
   .controls {
     flex-direction: row; 
     flex-wrap: wrap;
-    gap: 15px;
   }
 
   .input-group {
-    flex: 1 1 100%; 
-    justify-content: space-between;
+    flex: 1 1 100%;
   }
 
-  input {
-    max-width: 70%; /* Garante que o input não empurre o botão para fora */
-  }
+  input { max-width: 65%; }
 
-  button {
-    white-space: nowrap; /* Impede o texto do botão de quebrar em duas linhas */
-  }
-}
-  /* Garante que a tabela ocupe a largura real do visor */
-  .table-wrapper {
-    width: 100%;
-    margin: 0;
-    border-radius: 8px;
-  }
-  
-  /* Ajuste específico para a lista de Contatos não quebrar */
-  .contato a {
-    font-size: 14px;
-    justify-content: center;
-  }
-}
-
-/* RESPONSIVIDADE (MOBILE VERTICAL) */
-@media (max-width: 800px) {
-  .grid { grid-template-columns: 1fr; }
-  
-  .controls {
-    flex-direction: row; /* Mantém input e botão na mesma linha */
-    justify-content: space-between;
-  }
-
-  .input-group {
-    flex: 1 1 100%; /* Cada grupo ocupa uma linha inteira */
-  }
-
-  button { width: auto; } /* Impede que fiquem gigantes */
-  
   .main-table { height: 350px; }
-
-  .sortear-area {
-    display: flex;
-    gap: 10px;
-  }
+  
+  .table-wrapper { width: 100%; margin: 0; }
 }
