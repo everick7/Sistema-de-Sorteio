@@ -3,9 +3,10 @@ let vencedoresBloqueados = new Set();
 
 function adicionarNome() {
     const input = document.getElementById("nomeInput");
-    const nomes = input.value.trim().split(/[,.\n]/);
-    if (!input.value.trim()) return;
+    const texto = input.value.trim();
+    if (!texto) return;
 
+    const nomes = texto.split(/[,.\n]/);
     nomes.forEach(n => {
         const nomeLimpo = n.trim();
         if (nomeLimpo) participantes.push(nomeLimpo);
@@ -24,11 +25,12 @@ function deletarNome() {
     }
     participantes.splice(index, 1);
     vencedoresBloqueados.clear();
+    input.value = "";
     atualizarTabela();
 }
 
 function deletarTodos() {
-    if (confirm("Limpar lista completa?")) {
+    if (confirm("Limpar tudo?")) {
         participantes = [];
         vencedoresBloqueados.clear();
         atualizarTabela();
@@ -50,11 +52,12 @@ function atualizarTabela() {
 }
 
 function sortear() {
-    const qtd = parseInt(document.getElementById("qtdVencedores").value);
+    const qtdInput = document.getElementById("qtdVencedores");
+    const qtd = parseInt(qtdInput.value);
     const disponiveis = participantes.map((n, i) => ({nome: n, cod: i+1})).filter(p => !vencedoresBloqueados.has(p.cod));
 
     if (isNaN(qtd) || qtd <= 0 || qtd > disponiveis.length) {
-        alert("Quantidade inválida ou insuficiente.");
+        alert("Erro na quantidade.");
         return;
     }
 
