@@ -1,10 +1,9 @@
-/* Importação de fontes e ícones */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 * {
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif !important;
 }
 
 body {
@@ -18,84 +17,89 @@ body {
 .container {
     max-width: 1100px;
     margin: auto;
-    padding: 20px;
+    padding: 10px; /* Reduzido para ganhar espaço no mobile */
 }
 
-h1, h2 {
-    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    text-align: center;
-}
+h1 { text-align: center; margin-bottom: 15px; }
+h2 { text-align: center; margin-top: 0; }
 
-/* BOX DE VIDRO */
 .glass-box {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 15px; /* Reduzido conforme imagem */
+    margin-bottom: 15px;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-/* CONTROLES - Ajuste para não esticar verticalmente */
+/* AJUSTE DOS CONTROLES (PARA FICAR IGUAL A IMAGEM) */
 .controls {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    align-items: center; 
+    flex-direction: column;
+    gap: 8px;
+    max-width: 500px; /* Limita largura para não espalhar */
+    margin: 0 auto 20px auto; /* Centraliza a caixa na tela */
 }
 
 .input-group {
     display: flex;
-    gap: 8px;
-    flex: 1 1 300px;
-    align-items: center;
+    gap: 5px;
+    width: 100%;
 }
 
 input {
-    flex: 1;
-    min-width: 0;
-    padding: 12px;
+    flex: 2;
+    padding: 10px;
     border-radius: 8px;
     border: none;
     background: rgba(255, 255, 255, 0.95);
     outline: none;
     color: #333;
+    height: 40px;
 }
 
-/* GRID E TABELAS */
+/* LAYOUT GRID CENTRALIZADO */
 .grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 20px;
+    width: 100%;
 }
 
-.column-side {
+.column-main, .column-side {
+    width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center; /* Centraliza conteúdo interno */
 }
 
-.main-table { height: 450px; overflow-y: auto; }
-.winners-table { height: 180px; overflow-y: auto; }
+.table-wrapper {
+    width: 100%;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.main-table { height: 400px; }
+.winners-table { height: 180px; }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed;
+    margin: 0 auto;
 }
 
 th, td {
-    padding: 12px 5px;
+    padding: 10px 5px;
     text-align: center;
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-th { background: rgba(0,0,0,0.4); position: sticky; top: 0; z-index: 1; }
-.col-cod { width: 65px; }
+th { background: rgba(0,0,0,0.4); position: sticky; top: 0; }
+.col-cod { width: 60px; }
 
-/* BOTÕES - Tamanho fixo e animação */
+/* BOTÕES */
 button { 
     cursor: pointer; 
     border-radius: 8px; 
@@ -103,80 +107,14 @@ button {
     background: #00b4d8; 
     color: white; 
     font-weight: 600; 
-    padding: 10px 15px; 
-    transition: all 0.3s ease;
-    height: 42px; /* Altura fixa para alinhar com o input */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 5px 15px;
+    transition: 0.3s;
+    height: 40px;
+    flex: 1;
 }
 
-button:hover { 
-    transform: translateY(-3px); 
-    filter: brightness(1.2); 
-}
-
+button:hover { filter: brightness(1.2); transform: scale(1.02); }
 button.danger { background: #e63946; }
-.btn-reset { width: 100%; margin-top: 10px; background: #ffb703; color: #000; height: auto; padding: 12px; }
+.btn-reset { width: 100%; background: #ffb703; color: #000; margin-top: 5px; }
 
-/* CONTATOS E ÍCONES - Correção total */
-.contato a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #fff !important;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 8px;
-    background: rgba(255,255,255,0.08);
-    transition: all 0.3s ease;
-}
-
-.contato a:hover { 
-    background: rgba(255,255,255,0.2); 
-    transform: translateX(10px); 
-}
-
-/* Força a renderização do Font Awesome */
-.contato i { 
-    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
-    font-weight: 900;
-    margin-right: 15px; 
-    font-size: 20px; 
-    color: #00b4d8; 
-    width: 25px; 
-    text-align: center;
-    font-style: normal;
-    display: inline-block;
-}
-
-.sortear-area { 
-    margin-top: 15px; 
-    display: flex; 
-    gap: 10px; 
-    justify-content: center;
-}
-
-/* AJUSTE PARA TELA VERTICAL (MOBILE) */
-@media (max-width: 800px) {
-    .grid { grid-template-columns: 1fr; }
-    
-    /* Corrige a primeira caixa (controles) no mobile */
-    .controls {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .input-group {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    input { max-width: 60%; }
-    
-    button { flex: 1; }
-
-    .main-table { height: 350px; }
-
-    .contato a { justify-content: flex-start; }
-}
+/* CONTAT
