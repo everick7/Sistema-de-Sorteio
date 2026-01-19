@@ -92,49 +92,57 @@ th, td {
 .col-nome { width: auto; }
 
 /* REFORÇO DO EFEITO DE VIDRO (Mais claro para dar vida) */
+/* BOX DE VIDRO REFORÇADA */
 .glass-box {
-  background: rgba(255, 255, 255, 0.05); /* Menos opaco */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.08); /* Um pouco mais transparente para o fundo aparecer melhor */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px); /* Essencial para Safari/iPhone */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Sombra para dar profundidade */
 }
 
-/* --- CORREÇÃO PARA SMARTPHONE --- */
+/* CORREÇÃO DO EFEITO "SEM VIDA" NAS LETRAS */
+h1, h2, th, td, button {
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); /* Dá destaque ao texto sobre o fundo escuro */
+  letter-spacing: 0.5px;
+}
+
+/* RESPONSIVIDADE AJUSTADA */
 @media (max-width: 800px) {
-  .container {
-    padding: 10px;
+  /* Impede que o fundo "vaze" ou crie bordas brancas estranhas */
+  body {
+    background-attachment: scroll; /* Melhora a performance e bug de fundo no mobile */
   }
 
-  h1 { font-size: 1.6rem; margin-bottom: 15px; }
-
   .grid {
+    grid-template-columns: 1fr !important;
     display: flex;
-    flex-direction: column; /* Empilha Participantes -> Contato -> Vencedores */
+    flex-direction: column;
+  }
+
+  /* Mantém os botões pequenos mas centralizados */
+  .controls {
+    flex-direction: row; 
+    flex-wrap: wrap;
     gap: 15px;
   }
 
-  /* Ajuste de Controles para não amontoar */
-  .controls {
-    gap: 8px;
-  }
-
   .input-group {
-    flex-direction: row;
-    width: 100%;
+    flex: 1 1 100%; 
     justify-content: space-between;
   }
 
   input {
-    font-size: 14px;
-    padding: 8px;
+    max-width: 70%; /* Garante que o input não empurre o botão para fora */
   }
 
   button {
-    padding: 8px 12px;
-    font-size: 14px;
+    white-space: nowrap; /* Impede o texto do botão de quebrar em duas linhas */
   }
-
+}
   /* Garante que a tabela ocupe a largura real do visor */
   .table-wrapper {
     width: 100%;
