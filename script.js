@@ -55,6 +55,8 @@ function resetarBloqueios() {
     alert("Lista de vencedores limpa!");
 }
 
+// ... (mantenha suas variáveis e funções de adicionar/deletar iguais)
+
 function atualizarTabela() {
   const tabela = document.getElementById("tabelaNomes");
   tabela.innerHTML = "";
@@ -64,12 +66,11 @@ function atualizarTabela() {
     const jaSorteado = vencedoresBloqueados.has(cod);
     const row = document.createElement("tr");
     
-    if (jaSorteado) row.style.opacity = "0.4";
+    if (jaSorteado) row.style.opacity = "0.5";
 
-    // Alterado de (OK) para (Sorteado) conforme solicitado
     row.innerHTML = `
       <td class="col-cod">${cod}</td>
-      <td class="col-nome">${nome} ${jaSorteado ? "<strong class='sorteado-label'>(Sorteado)</strong>" : ""}</td>
+      <td class="col-nome">${nome} ${jaSorteado ? "<span class='sorteado-label'>(Sorteado)</span>" : ""}</td>
     `;
     tabela.appendChild(row);
   });
@@ -113,7 +114,7 @@ function mostrarVencedores(lista) {
 
   lista.forEach(p => {
     const row = document.createElement("tr");
-    // Removido o estilo amarelo (color: #ffb703)
+    // Removido qualquer estilo de cor inline (como o amarelo)
     row.innerHTML = `
       <td class="col-cod">${p.cod}</td>
       <td class="col-nome">${p.nome}</td>
