@@ -7,7 +7,6 @@ body {
   background: #1a1a2e url("https://i.pinimg.com/736x/59/8d/ea/598dea1449bcb0c207f19590236e983c.jpg") no-repeat center center fixed;
   background-size: cover;
   color: #fff;
-  /* Evita rolagem horizontal indesejada no celular */
   overflow-x: hidden; 
 }
 
@@ -15,29 +14,25 @@ body {
   max-width: 1100px;
   margin: auto;
   padding: 20px;
-  box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+  box-sizing: border-box;
 }
 
-/* BOX DE VIDRO */
+h1, h2 {
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
 /* BOX DE VIDRO REFORÇADA */
 .glass-box {
-  background: rgba(255, 255, 255, 0.08); /* Um pouco mais transparente para o fundo aparecer melhor */
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px); /* Essencial para Safari/iPhone */
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Sombra para dar profundidade */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-/* CORREÇÃO DO EFEITO "SEM VIDA" NAS LETRAS */
-h1, h2, th, td, button {
-  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); /* Dá destaque ao texto sobre o fundo escuro */
-  letter-spacing: 0.5px;
-}
-
-/* CONTROLES */
 .controls {
   display: flex;
   flex-wrap: wrap;
@@ -48,24 +43,25 @@ h1, h2, th, td, button {
 .input-group {
   display: flex;
   gap: 5px;
-  flex: 1 1 300px; /* Permite que o grupo quebre linha se não houver espaço */
+  flex: 1 1 300px;
   max-width: 100%;
 }
 
 input {
   flex: 1;
   min-width: 0;
-  padding: 10px;
+  padding: 12px;
   border-radius: 8px;
   border: none;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   font-family: inherit;
+  outline: none;
 }
 
-/* LAYOUT EM GRID (Horizontal) */
+/* LAYOUT EM GRID */
 .grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr; /* 1.5 partes para esquerda, 1 parte para direita */
+  grid-template-columns: 1.5fr 1fr;
   gap: 20px;
 }
 
@@ -74,28 +70,27 @@ input {
   flex-direction: column;
 }
 
-/* ALTURA DAS TABELAS */
-.main-table {
-  height: 450px;
-  overflow-y: auto;
+.main-table { height: 450px; overflow-y: auto; }
+.winners-table { height: 180px; overflow-y: auto; }
+
+table { width: 100%; border-collapse: collapse; }
+th { background: rgba(0,0,0,0.4); padding: 12px; position: sticky; top: 0; z-index: 1; }
+td { padding: 10px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+/* BOTÕES */
+button { 
+  cursor: pointer; 
+  border-radius: 8px; 
+  border: none; 
+  background: #00b4d8; 
+  color: white; 
+  font-weight: 600; 
+  padding: 10px 18px; 
+  transition: 0.3s;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
-.winners-table {
-  height: 180px;
-  overflow-y: auto;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th { background: rgba(0,0,0,0.3); padding: 10px; position: sticky; top: 0; z-index: 1; }
-td { padding: 8px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
-
-/* BOTÕES E CONTATOS */
-button { cursor: pointer; border-radius: 8px; border: none; background: #00b4d8; color: white; font-weight: 600; padding: 10px; transition: 0.3s; }
-button:hover { transform: scale(1.02); filter: brightness(1.2); }
+button:hover { transform: scale(1.05); filter: brightness(1.1); }
 button.danger { background: #e63946; }
 .btn-reset { width: 100%; margin-top: 10px; background: #ffb703; color: #000; }
 
@@ -104,48 +99,34 @@ button.danger { background: #e63946; }
   align-items: center;
   text-decoration: none;
   color: #fff;
-  padding: 8px;
-  border-radius: 5px;
-  margin-bottom: 5px;
-  background: rgba(255,255,255,0.05);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background: rgba(255,255,255,0.08);
   transition: 0.3s;
 }
-.contato a:hover { background: rgba(255,255,255,0.15); }
-.contato i { margin-right: 10px; font-size: 20px; width: 25px; text-align: center; color: #00b4d8; }
+.contato a:hover { background: rgba(255,255,255,0.2); }
+.contato i { margin-right: 12px; font-size: 20px; color: #00b4d8; }
 
-/* ======================================================
-   RESPONSIVIDADE (Ajustes Mantendo o Estilo CodePen)
-   ====================================================== */
-/* RESPONSIVIDADE AJUSTADA */
+/* RESPONSIVIDADE (MOBILE VERTICAL) */
 @media (max-width: 800px) {
-  /* Impede que o fundo "vaze" ou crie bordas brancas estranhas */
-  body {
-    background-attachment: scroll; /* Melhora a performance e bug de fundo no mobile */
-  }
-
-  .grid {
-    grid-template-columns: 1fr !important;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Mantém os botões pequenos mas centralizados */
+  .grid { grid-template-columns: 1fr; }
+  
   .controls {
-    flex-direction: row; 
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-
-  .input-group {
-    flex: 1 1 100%; 
+    flex-direction: row; /* Mantém input e botão na mesma linha */
     justify-content: space-between;
   }
 
-  input {
-    max-width: 70%; /* Garante que o input não empurre o botão para fora */
+  .input-group {
+    flex: 1 1 100%; /* Cada grupo ocupa uma linha inteira */
   }
 
-  button {
-    white-space: nowrap; /* Impede o texto do botão de quebrar em duas linhas */
+  button { width: auto; } /* Impede que fiquem gigantes */
+  
+  .main-table { height: 350px; }
+
+  .sortear-area {
+    display: flex;
+    gap: 10px;
   }
 }
