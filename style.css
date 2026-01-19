@@ -1,7 +1,7 @@
+/* Importação corrigida para garantir que os ícones apareçam */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-/* Reset e Fonte Global */
 * {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif !important;
@@ -26,7 +26,6 @@ h1, h2 {
     text-align: center;
 }
 
-/* BOX DE VIDRO */
 .glass-box {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(15px);
@@ -38,18 +37,20 @@ h1, h2 {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-/* CONTROLES DE ENTRADA */
+/* BOTÕES ESTICADOS: Corrigido com align-items e justify-content */
 .controls {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
+    align-items: center; /* Impede botões de esticarem verticalmente */
 }
 
 .input-group {
     display: flex;
     gap: 5px;
     flex: 1 1 300px;
+    align-items: center; /* Alinha input e botão na mesma linha */
 }
 
 input {
@@ -63,11 +64,12 @@ input {
     color: #333;
 }
 
-/* LAYOUT GRID (LADO A LADO) */
+/* LAYOUT GRID E CENTRALIZAÇÃO */
 .grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 20px;
+    justify-content: center;
 }
 
 .column-side {
@@ -75,19 +77,26 @@ input {
     flex-direction: column;
 }
 
-/* TABELAS E ROLAGEM */
-.main-table { height: 450px; overflow-y: auto; }
-.winners-table { height: 180px; overflow-y: auto; }
+.main-table, .winners-table {
+    overflow-y: auto;
+    width: 100%;
+    margin: 0 auto; /* Centraliza a div da tabela */
+}
+
+.main-table { height: 450px; }
+.winners-table { height: 180px; }
 
 table {
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
+    margin: 0 auto; /* Centraliza a tabela */
 }
 
 th, td {
     padding: 12px 5px;
-    text-align: center;
+    text-align: center; /* Centralização horizontal do texto */
+    vertical-align: middle; /* Centralização vertical */
     word-wrap: break-word;
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
@@ -95,7 +104,7 @@ th, td {
 th { background: rgba(0,0,0,0.4); position: sticky; top: 0; z-index: 1; }
 .col-cod { width: 65px; }
 
-/* BOTÕES - ANIMAÇÃO DE SUBIR */
+/* BOTÕES */
 button { 
     cursor: pointer; 
     border-radius: 8px; 
@@ -105,25 +114,18 @@ button {
     font-weight: 600; 
     padding: 10px 18px; 
     transition: all 0.3s ease;
+    height: fit-content; /* Força o botão a ter a altura do texto */
 }
 
 button:hover { 
     transform: translateY(-3px); 
     filter: brightness(1.2); 
-    box-shadow: 0 5px 15px rgba(0, 180, 216, 0.4);
 }
 
 button.danger { background: #e63946; }
+.btn-reset { width: 100%; margin-top: 10px; background: #ffb703; color: #000; }
 
-.btn-reset { 
-    width: 100%; 
-    margin-top: 10px; 
-    background: #ffb703; 
-    color: #000; 
-    text-shadow: none;
-}
-
-/* CONTATOS - ANIMAÇÃO DE DESLIZE */
+/* CONTATOS - Ícones Corrigidos */
 .contato a {
     display: flex;
     align-items: center;
@@ -145,35 +147,23 @@ button.danger { background: #e63946; }
     margin-right: 12px; 
     font-size: 20px; 
     color: #00b4d8; 
-    width: 25px; 
-    text-align: center; 
+    width: 30px; 
+    text-align: center;
+    display: inline-block; /* Garante que o ícone renderize corretamente */
 }
 
-.sortear-area { margin-top: 15px; display: flex; gap: 10px; }
+.sortear-area { 
+    margin-top: 15px; 
+    display: flex; 
+    gap: 10px; 
+    justify-content: center; /* Centraliza botão sortear */
+}
 
-/* RESPONSIVIDADE (CELULAR / VERTICAL) */
+/* RESPONSIVIDADE */
 @media (max-width: 800px) {
-    .grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .controls {
-        flex-direction: column;
-    }
-
-    .input-group {
-        width: 100%;
-    }
-
-    input {
-        font-size: 14px;
-    }
-
+    .grid { grid-template-columns: 1fr; }
+    .controls { flex-direction: column; align-items: stretch; }
+    .input-group { width: 100%; }
     .main-table { height: 350px; }
-
-    /* Força animação no toque para mobile */
-    .contato a:active {
-        transform: translateX(10px);
-        background: rgba(255,255,255,0.2);
-    }
+    .contato a { justify-content: center; }
 }
