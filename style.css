@@ -19,19 +19,18 @@ body {
 
 h1, h2 {
   text-shadow: 0 4px 10px rgba(0,0,0,0.5);
-  text-align: center;
 }
 
-/* BOX DE VIDRO - Ajustada para ter mais "vida" */
+/* BOX DE VIDRO REFORÇADA */
 .glass-box {
-  background: rgba(255, 255, 255, 0.07); /* Mais transparente para mostrar o fundo */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .controls {
@@ -71,27 +70,104 @@ input {
   flex-direction: column;
 }
 
-/* TABELAS - Correção de Alinhamento */
 .main-table { height: 450px; overflow-y: auto; }
 .winners-table { height: 180px; overflow-y: auto; }
 
-table { 
-  width: 100%; 
-  border-collapse: collapse; 
-  table-layout: fixed; /* Força o alinhamento rígido das colunas */
+/* --- AJUSTE GLOBAL DE TABELAS --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* Força as colunas a respeitarem a largura */
 }
 
-th { 
-  background: rgba(0,0,0,0.5); 
-  padding: 12px 5px; 
-  position: sticky; 
-  top: 0; 
-  z-index: 1; 
-  text-transform: uppercase;
-  font-size: 0.9rem;
+th, td {
+  padding: 12px 5px;
+  text-align: center;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
-td { 
-  padding: 12px 5px; 
-  text-align: center; 
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+/* Define larguras fixas para não desregular */
+.col-cod { width: 60px; }
+.col-nome { width: auto; }
+
+/* REFORÇO DO EFEITO DE VIDRO (Mais claro para dar vida) */
+.glass-box {
+  background: rgba(255, 255, 255, 0.05); /* Menos opaco */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* --- CORREÇÃO PARA SMARTPHONE --- */
+@media (max-width: 800px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 { font-size: 1.6rem; margin-bottom: 15px; }
+
+  .grid {
+    display: flex;
+    flex-direction: column; /* Empilha Participantes -> Contato -> Vencedores */
+    gap: 15px;
+  }
+
+  /* Ajuste de Controles para não amontoar */
+  .controls {
+    gap: 8px;
+  }
+
+  .input-group {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  /* Garante que a tabela ocupe a largura real do visor */
+  .table-wrapper {
+    width: 100%;
+    margin: 0;
+    border-radius: 8px;
+  }
+  
+  /* Ajuste específico para a lista de Contatos não quebrar */
+  .contato a {
+    font-size: 14px;
+    justify-content: center;
+  }
+}
+
+/* RESPONSIVIDADE (MOBILE VERTICAL) */
+@media (max-width: 800px) {
+  .grid { grid-template-columns: 1fr; }
+  
+  .controls {
+    flex-direction: row; /* Mantém input e botão na mesma linha */
+    justify-content: space-between;
+  }
+
+  .input-group {
+    flex: 1 1 100%; /* Cada grupo ocupa uma linha inteira */
+  }
+
+  button { width: auto; } /* Impede que fiquem gigantes */
+  
+  .main-table { height: 350px; }
+
+  .sortear-area {
+    display: flex;
+    gap: 10px;
+  }
+}
