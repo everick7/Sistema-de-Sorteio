@@ -6,7 +6,7 @@ function adicionarNome() {
     const textoEntrada = input.value.trim();
 
     if (!textoEntrada) {
-        alert("Por favor, digite um nome.");
+        alert("Por favor, digite um ou mais nomes.");
         return;
     }
 
@@ -34,7 +34,7 @@ function deletarNome() {
     }
 
     participantes.splice(index, 1);
-    vencedoresBloqueados.clear(); // Reseta bloqueios para evitar erro de ID
+    vencedoresBloqueados.clear(); 
     input.value = "";
     atualizarTabela();
 }
@@ -52,28 +52,26 @@ function resetarBloqueios() {
     vencedoresBloqueados.clear();
     document.getElementById("tabelaVencedores").innerHTML = "";
     atualizarTabela();
-    alert("Lista de vencedores limpa!");
+    alert("Vencedores liberados para novo sorteio!");
 }
 
-// ... (mantenha suas variáveis e funções de adicionar/deletar iguais)
-
 function atualizarTabela() {
-  const tabela = document.getElementById("tabelaNomes");
-  tabela.innerHTML = "";
+    const tabela = document.getElementById("tabelaNomes");
+    tabela.innerHTML = "";
 
-  participantes.forEach((nome, i) => {
-    const cod = i + 1;
-    const jaSorteado = vencedoresBloqueados.has(cod);
-    const row = document.createElement("tr");
-    
-    if (jaSorteado) row.style.opacity = "0.5";
+    participantes.forEach((nome, i) => {
+        const cod = i + 1;
+        const jaSorteado = vencedoresBloqueados.has(cod);
+        const row = document.createElement("tr");
+        
+        if (jaSorteado) row.style.opacity = "0.5";
 
-    row.innerHTML = `
-      <td class="col-cod">${cod}</td>
-      <td class="col-nome">${nome} ${jaSorteado ? "<span class='sorteado-label'>(Sorteado)</span>" : ""}</td>
-    `;
-    tabela.appendChild(row);
-  });
+        row.innerHTML = `
+            <td>${cod}</td>
+            <td>${nome} ${jaSorteado ? "<strong>(Sorteado)</strong>" : ""}</td>
+        `;
+        tabela.appendChild(row);
+    });
 }
 
 function sortear() {
@@ -85,12 +83,12 @@ function sortear() {
         .filter(p => !vencedoresBloqueados.has(p.cod));
 
     if (isNaN(qtd) || qtd <= 0) {
-        alert("Digite a quantidade de vencedores.");
+        alert("Insira uma quantidade válida.");
         return;
     }
 
     if (disponiveis.length === 0 || qtd > disponiveis.length) {
-        alert("Participantes insuficientes ou já sorteados.");
+        alert("Não há participantes suficientes disponíveis.");
         return;
     }
 
@@ -109,16 +107,15 @@ function sortear() {
 }
 
 function mostrarVencedores(lista) {
-  const tabela = document.getElementById("tabelaVencedores");
-  tabela.innerHTML = ""; 
+    const tabela = document.getElementById("tabelaVencedores");
+    tabela.innerHTML = ""; 
 
-  lista.forEach(p => {
-    const row = document.createElement("tr");
-    // Removido qualquer estilo de cor inline (como o amarelo)
-    row.innerHTML = `
-      <td class="col-cod">${p.cod}</td>
-      <td class="col-nome">${p.nome}</td>
-    `;
-    tabela.appendChild(row);
-  });
+    lista.forEach(p => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${p.cod}</td>
+            <td>${p.nome}</td>
+        `;
+        tabela.appendChild(row);
+    });
 }
