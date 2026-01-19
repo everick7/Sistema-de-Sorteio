@@ -56,22 +56,23 @@ function resetarBloqueios() {
 }
 
 function atualizarTabela() {
-    const tabela = document.getElementById("tabelaNomes");
-    tabela.innerHTML = "";
+  const tabela = document.getElementById("tabelaNomes");
+  tabela.innerHTML = "";
 
-    participantes.forEach((nome, i) => {
-        const cod = i + 1;
-        const jaSorteado = vencedoresBloqueados.has(cod);
-        const row = document.createElement("tr");
-        
-        if (jaSorteado) row.style.opacity = "0.4";
+  participantes.forEach((nome, i) => {
+    const cod = i + 1;
+    const jaSorteado = vencedoresBloqueados.has(cod);
+    const row = document.createElement("tr");
+    
+    if (jaSorteado) row.style.opacity = "0.4";
 
-        row.innerHTML = `
-            <td>${cod}</td>
-            <td>${nome} ${jaSorteado ? "<strong>(OK)</strong>" : ""}</td>
-        `;
-        tabela.appendChild(row);
-    });
+    // Alterado de (OK) para (Sorteado) conforme solicitado
+    row.innerHTML = `
+      <td class="col-cod">${cod}</td>
+      <td class="col-nome">${nome} ${jaSorteado ? "<strong class='sorteado-label'>(Sorteado)</strong>" : ""}</td>
+    `;
+    tabela.appendChild(row);
+  });
 }
 
 function sortear() {
@@ -107,15 +108,16 @@ function sortear() {
 }
 
 function mostrarVencedores(lista) {
-    const tabela = document.getElementById("tabelaVencedores");
-    tabela.innerHTML = ""; 
+  const tabela = document.getElementById("tabelaVencedores");
+  tabela.innerHTML = ""; 
 
-    lista.forEach(p => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td style="color: #ffb703; font-weight: bold;">${p.cod}</td>
-            <td style="color: #ffb703; font-weight: bold;">${p.nome}</td>
-        `;
-        tabela.appendChild(row);
-    });
+  lista.forEach(p => {
+    const row = document.createElement("tr");
+    // Removido o estilo amarelo (color: #ffb703)
+    row.innerHTML = `
+      <td class="col-cod">${p.cod}</td>
+      <td class="col-nome">${p.nome}</td>
+    `;
+    tabela.appendChild(row);
+  });
 }
