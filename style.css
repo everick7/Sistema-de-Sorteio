@@ -1,0 +1,125 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #1a1a2e url("https://i.pinimg.com/736x/59/8d/ea/598dea1449bcb0c207f19590236e983c.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* BOX DE VIDRO */
+.glass-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* CORREÇÃO DOS INPUTS (Não saem da caixa) */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.input-group {
+  display: flex;
+  gap: 5px;
+  flex-grow: 1; /* Faz os grupos crescerem proporcionalmente */
+  max-width: 100%; /* Impede de vazar no mobile */
+}
+
+input {
+  flex: 1; /* Preenche o espaço disponível */
+  min-width: 0; /* Evita que o input ignore o limite do container */
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* LAYOUT EM GRID (Horizontal) */
+.grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr; /* 1.5 partes para esquerda, 1 parte para direita */
+  gap: 20px;
+}
+
+.column-side {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ======================================================
+   AQUI VOCÊ MEXE NA ALTURA DAS TABELAS (VERTICAL)
+   ====================================================== */
+
+.main-table {
+  height: 450px; /* Altere este valor para aumentar a lista de PARTICIPANTES */
+  overflow-y: auto;
+}
+
+.winners-table {
+  height: 180px; /* Altere este valor para a altura da lista de VENCEDORES */
+  overflow-y: auto;
+}
+
+/* ====================================================== */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th { background: rgba(0,0,0,0.2); padding: 10px; position: sticky; top: 0; }
+td { padding: 8px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+/* BOTÕES E CONTATOS */
+button { cursor: pointer; border-radius: 8px; border: none; background: #00b4d8; color: white; font-weight: 600; padding: 10px; transition: 0.3s; }
+button:hover { transform: scale(1.02); filter: brightness(1.2); }
+button.danger { background: #e63946; }
+.btn-reset { width: 100%; margin-top: 10px; background: #ffb703; color: #000; }
+
+.contato a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  background: rgba(255,255,255,0.05);
+}
+
+.contato i { margin-right: 10px; font-size: 20px; width: 25px; text-align: center; color: #00b4d8; }
+
+/* RESPONSIVIDADE (TELA VERTICAL / CELULAR) */
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr; /* Uma coluna só no celular */
+  }
+  
+  .main-table {
+    height: 300px; /* Altura menor no celular para não ficar gigante */
+  }
+  
+  .input-group {
+    flex-direction: row;
+    width: 100%;
+  }
+  
+  
+  
+}
