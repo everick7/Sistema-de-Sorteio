@@ -110,39 +110,19 @@ button.danger { background: #e63946; }
    RESPONSIVIDADE (Ajustes para Tela Vertical)
    ====================================================== */
 @media (max-width: 800px) {
-  .container {
-    padding: 10px; /* Reduz espaço lateral no celular */
-  }
-
-  h1 {
-    font-size: 1.8rem;
-    text-align: center;
-  }
-
   .grid {
-    grid-template-columns: 1fr; /* Força uma única coluna */
+    grid-template-columns: 1fr; /* Uma coluna só no celular */
   }
   
-  .controls {
-    flex-direction: column; /* Empilha os grupos de Adicionar e Deletar */
-  }
-
-  .input-group {
-    width: 100%; /* Garante que ocupe a largura toda */
-  }
-
   .main-table {
-    height: 350px; /* Ajuste para não ocupar a tela toda do celular */
+    height: 300px; /* Altura menor no celular para não ficar gigante */
   }
-
-  /* Ajuste para o botão de sorteio ficar mais fácil de clicar */
-  .sortear-area {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .sortear-area input, .sortear-area button {
+  
+  .input-group {
+    flex-direction: row;
     width: 100%;
   }
+  
+  
+  
 }
