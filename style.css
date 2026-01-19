@@ -1,9 +1,10 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+/* Reset e Fonte Global */
 * {
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif !important;
 }
 
 body {
@@ -37,7 +38,7 @@ h1, h2 {
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-/* CONTROLES */
+/* CONTROLES DE ENTRADA */
 .controls {
     display: flex;
     flex-wrap: wrap;
@@ -62,7 +63,7 @@ input {
     color: #333;
 }
 
-/* LAYOUT GRID */
+/* LAYOUT GRID (LADO A LADO) */
 .grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -74,7 +75,7 @@ input {
     flex-direction: column;
 }
 
-/* TABELAS */
+/* TABELAS E ROLAGEM */
 .main-table { height: 450px; overflow-y: auto; }
 .winners-table { height: 180px; overflow-y: auto; }
 
@@ -94,7 +95,7 @@ th, td {
 th { background: rgba(0,0,0,0.4); position: sticky; top: 0; z-index: 1; }
 .col-cod { width: 65px; }
 
-/* BOTÕES - ANIMAÇÃO SUBIR */
+/* BOTÕES - ANIMAÇÃO DE SUBIR */
 button { 
     cursor: pointer; 
     border-radius: 8px; 
@@ -113,25 +114,31 @@ button:hover {
 }
 
 button.danger { background: #e63946; }
-.btn-reset { width: 100%; margin-top: 10px; background: #ffb703; color: #000; }
 
-/* CONTATOS - ANIMAÇÃO DESLIZE (FIX PARA MOBILE) */
+.btn-reset { 
+    width: 100%; 
+    margin-top: 10px; 
+    background: #ffb703; 
+    color: #000; 
+    text-shadow: none;
+}
+
+/* CONTATOS - ANIMAÇÃO DE DESLIZE */
 .contato a {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #fff !important; /* Força a cor branca na letra */
+    color: #fff !important;
     padding: 12px;
     border-radius: 8px;
     margin-bottom: 8px;
     background: rgba(255,255,255,0.08);
     transition: all 0.3s ease !important;
-    font-family: 'Poppins', sans-serif;
 }
 
 .contato a:hover { 
     background: rgba(255,255,255,0.2); 
-    transform: translateX(10px); /* Animação de deslize */
+    transform: translateX(10px); 
 }
 
 .contato i { 
@@ -144,16 +151,12 @@ button.danger { background: #e63946; }
 
 .sortear-area { margin-top: 15px; display: flex; gap: 10px; }
 
-/* RESPONSIVIDADE (MOBILE VERTICAL REAL) */
+/* RESPONSIVIDADE (CELULAR / VERTICAL) */
 @media (max-width: 800px) {
     .grid {
-        grid-template-columns: 1fr; /* Força uma coluna única */
+        grid-template-columns: 1fr;
     }
     
-    .column-side {
-        order: 2; /* Garante que contatos/vencedores fiquem abaixo */
-    }
-
     .controls {
         flex-direction: column;
     }
@@ -166,15 +169,9 @@ button.danger { background: #e63946; }
         font-size: 14px;
     }
 
-    /* Ajuste para botões não ocuparem a largura toda se não quiser */
-    .input-group button {
-        width: auto;
-        min-width: 100px;
-    }
-
     .main-table { height: 350px; }
 
-    /* Força a animação no mobile */
+    /* Força animação no toque para mobile */
     .contato a:active {
         transform: translateX(10px);
         background: rgba(255,255,255,0.2);
