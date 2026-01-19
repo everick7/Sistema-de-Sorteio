@@ -1,120 +1,148 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-* {
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif !important;
-}
-
 body {
-    margin: 0;
-    background: #1a1a2e url("https://i.pinimg.com/736x/59/8d/ea/598dea1449bcb0c207f19590236e983c.jpg") no-repeat center center fixed;
-    background-size: cover;
-    color: #fff;
-    overflow-x: hidden;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #1a1a2e url("https://i.pinimg.com/736x/59/8d/ea/598dea1449bcb0c207f19590236e983c.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  /* Evita rolagem horizontal indesejada no celular */
+  overflow-x: hidden; 
 }
 
 .container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 10px; /* Reduzido para ganhar espaço no mobile */
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box; /* Garante que o padding não aumente a largura total */
 }
 
-h1 { text-align: center; margin-bottom: 15px; }
-h2 { text-align: center; margin-top: 0; }
-
+/* BOX DE VIDRO */
 .glass-box {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 15px;
-    padding: 15px; /* Reduzido conforme imagem */
-    margin-bottom: 15px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
-/* AJUSTE DOS CONTROLES (PARA FICAR IGUAL A IMAGEM) */
+/* CONTROLES */
 .controls {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    max-width: 500px; /* Limita largura para não espalhar */
-    margin: 0 auto 20px auto; /* Centraliza a caixa na tela */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
 }
 
 .input-group {
-    display: flex;
-    gap: 5px;
-    width: 100%;
+  display: flex;
+  gap: 5px;
+  flex: 1 1 300px; /* Permite que o grupo quebre linha se não houver espaço */
+  max-width: 100%;
 }
 
 input {
-    flex: 2;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    background: rgba(255, 255, 255, 0.95);
-    outline: none;
-    color: #333;
-    height: 40px;
+  flex: 1;
+  min-width: 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  font-family: inherit;
 }
 
-/* LAYOUT GRID CENTRALIZADO */
+/* LAYOUT EM GRID */
 .grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 20px;
-    width: 100%;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 20px;
 }
 
-.column-main, .column-side {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centraliza conteúdo interno */
+.column-side {
+  display: flex;
+  flex-direction: column;
 }
 
-.table-wrapper {
-    width: 100%;
-    overflow-y: auto;
-    margin-bottom: 10px;
+/* ALTURA DAS TABELAS */
+.main-table {
+  height: 450px;
+  overflow-y: auto;
 }
 
-.main-table { height: 400px; }
-.winners-table { height: 180px; }
+.winners-table {
+  height: 180px;
+  overflow-y: auto;
+}
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
+  width: 100%;
+  border-collapse: collapse;
 }
 
-th, td {
-    padding: 10px 5px;
-    text-align: center;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-th { background: rgba(0,0,0,0.4); position: sticky; top: 0; }
-.col-cod { width: 60px; }
+th { background: rgba(0,0,0,0.3); padding: 10px; position: sticky; top: 0; z-index: 1; }
+td { padding: 8px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
 
 /* BOTÕES */
-button { 
-    cursor: pointer; 
-    border-radius: 8px; 
-    border: none; 
-    background: #00b4d8; 
-    color: white; 
-    font-weight: 600; 
-    padding: 5px 15px;
-    transition: 0.3s;
-    height: 40px;
-    flex: 1;
-}
-
-button:hover { filter: brightness(1.2); transform: scale(1.02); }
+button { cursor: pointer; border-radius: 8px; border: none; background: #00b4d8; color: white; font-weight: 600; padding: 10px; transition: 0.3s; }
+button:hover { transform: scale(1.02); filter: brightness(1.2); }
 button.danger { background: #e63946; }
-.btn-reset { width: 100%; background: #ffb703; color: #000; margin-top: 5px; }
+.btn-reset { width: 100%; margin-top: 10px; background: #ffb703; color: #000; }
 
-/* CONTAT
+/* CONTATOS */
+.contato a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  background: rgba(255,255,255,0.05);
+  transition: 0.3s;
+}
+.contato a:hover { background: rgba(255,255,255,0.15); }
+.contato i { margin-right: 10px; font-size: 20px; width: 25px; text-align: center; color: #00b4d8; }
+
+/* ======================================================
+   RESPONSIVIDADE (Ajustes para Tela Vertical)
+   ====================================================== */
+@media (max-width: 800px) {
+  .container {
+    padding: 10px; /* Reduz espaço lateral no celular */
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .grid {
+    grid-template-columns: 1fr; /* Força uma única coluna */
+  }
+  
+  .controls {
+    flex-direction: column; /* Empilha os grupos de Adicionar e Deletar */
+  }
+
+  .input-group {
+    width: 100%; /* Garante que ocupe a largura toda */
+  }
+
+  .main-table {
+    height: 350px; /* Ajuste para não ocupar a tela toda do celular */
+  }
+
+  /* Ajuste para o botão de sorteio ficar mais fácil de clicar */
+  .sortear-area {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sortear-area input, .sortear-area button {
+    width: 100%;
+  }
+}
