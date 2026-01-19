@@ -30,17 +30,16 @@
             <div class="glass-box column-main">
                 <h2>Participantes</h2>
                 <div class="table-wrapper main-table"> 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Cod.</th>
-                                <th>Nome</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tabelaNomes"></tbody>
-                    </table>
-                </div>
-
+    <table class="sorteio-table">
+        <thead>
+            <tr>
+                <th class="col-cod">Cod.</th>
+                <th class="col-nome">Nome</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaNomes"></tbody>
+    </table>
+</div>
                 <div class="sortear-area">
                     <input type="number" id="qtdVencedores" placeholder="Qtd. vencedores">
                     <button onclick="sortear()">Sortear</button>
